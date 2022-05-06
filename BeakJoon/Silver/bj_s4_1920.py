@@ -1,19 +1,29 @@
 # 1920
-import sys
-import time
+N = int(input())
+dataAry = list(map(int, input().split()))
+dataAry = sorted(dataAry)
+M = int(input())
+findAry = list(map(int, input().split()))
 
-start = time.process_time()
+def binSearch(ary, fData):
+  pos = -1
+  start = 0
+  end = len(ary) -1
 
-N = int(sys.stdin.readline())
-A = [int(x) for x in sys.stdin.readline().split()]
-M = int(sys.stdin.readline())
-B = [int(x) for x in sys.stdin.readline().split()]
+  while (start <= end):
+    mid = (start + end) // 2
+    if fData == ary[mid]:
+      return mid
+    elif fData > ary[mid]:
+      start = mid +1
+    else:
+      end = mid -1
 
-for m in B:
-  if m in A:
-    print(1)
-  else:
+  return pos
+
+for i in findAry:
+  position = binSearch(dataAry, i)
+  if position == -1:
     print(0)
-    
-end = time.process_time()
-print(end-start)
+  else:
+    print(1)
