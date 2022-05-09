@@ -2,6 +2,7 @@
 N = int(input())
 dataAry = list(map(int, input().split()))
 dataAry = sorted(dataAry)
+
 M = int(input())
 findAry = list(map(int, input().split()))
 
